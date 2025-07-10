@@ -20,7 +20,7 @@ export default function EditTask() {
   const task = useTaskStore(state => state.tasks.find(t => t.id === id));
   const updateTask = useTaskStore(state => state.updateTask);
   const categories = useTaskStore(state => state.categories);
-  
+
 if (!id) return <p>Invalid task ID</p>;
   const handleSave = (data: TaskData) => {
     updateTask(id, data); 
