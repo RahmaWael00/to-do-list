@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import useAuthStore from '../store/authStore';
-import '../App.css'; // بنستخدم نفس الـ CSS العام
+import '../App.css'; // تأكدي إن السطر ده موجود
 
 const Navbar: React.FC = () => {
   const navigate = useNavigate();
