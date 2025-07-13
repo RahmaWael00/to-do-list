@@ -18,7 +18,7 @@
 }
 
 body {
-  margin: 0; 
+  margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: var(--bg-color);
   color: var(--text-color);
@@ -88,6 +88,7 @@ h1 {
   min-width: 120px;
   user-select: none;
 }
+
 .controls button:hover,
 .controls button:focus {
   background-color: #21a1f1;
@@ -105,6 +106,7 @@ h1 {
   transition: border-color 0.3s ease;
   color: var(--text-color);
 }
+
 .task-card:hover {
   border-color: #61dafb;
 }
@@ -128,15 +130,18 @@ h1 {
   user-select: none;
   color: #fff;
 }
+
 .badge.Low {
-  background-color: #2ecc71; 
+  background-color: #2ecc71;
 }
+
 .badge.Medium {
-  background-color: #f1c40f; 
+  background-color: #f1c40f;
   color: #333;
 }
+
 .badge.High {
-  background-color: #e74c3c; 
+  background-color: #e74c3c;
 }
 
 .task-card p {
@@ -287,15 +292,16 @@ form button.secondary:focus {
   form button {
     width: 100%;
   }
+}
+
 /* ======= Navbar Styles ======= */
-/* ===== Navbar styles ===== */
 .navbar {
-  width: 100%;                 /* يغطي العرض كله */
+  width: 100%;
   display: flex;
-  justify-content: space-between; /* يفصل العنوان عن الزر */
+  justify-content: space-between;
   align-items: center;
   padding: 12px 20px;
-  background: #333 !important; /* لون الخلفية ثابت وواضح */
+  background: #333 !important;
   border-radius: 8px;
   margin-bottom: 20px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
@@ -315,7 +321,6 @@ form button.secondary:focus {
   padding: 6px 14px;
   cursor: pointer;
   font-weight: 600;
-
 }
 
 .logout-btn:hover {
@@ -328,7 +333,4 @@ form button.secondary:focus {
     flex-direction: column;
     gap: 0.75rem;
   }
-}
-
-
 }
