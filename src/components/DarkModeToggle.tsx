@@ -1,17 +1,14 @@
-// DarkModeToggle.tsx
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
-type DarkModeToggleProps = {
+type Props = {
   dark: boolean;
   setDark: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const DarkModeToggle: React.FC<DarkModeToggleProps> = ({ dark, setDark }) => {
-  return (
-    <button onClick={() => setDark(!dark)}>
-      {dark ? '🌙 Dark' : '☀️ Light'}
-    </button>
-  );
-};
+const DarkModeToggle: React.FC<Props> = ({ dark, setDark }) => (
+  <button onClick={() => setDark(!dark)}>
+    {dark ? '🌙 Dark' : '☀️ Light'}
+  </button>
+);
 
 export default DarkModeToggle;
