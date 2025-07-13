@@ -1,24 +1,22 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import useAuthStore from '../store/authStore';
-import '../App.css'; // تأكدي إن السطر ده موجود
+import '../App.css';
 
 const Navbar: React.FC = () => {
   const navigate = useNavigate();
   const { isAuth, logout } = useAuthStore();
 
+  const handleLogout = () => {
+    logout();
+    navigate('/login');
+  };
+
   return (
     <nav className="navbar">
-      <Link to="/" className="navbar-logo">📝 My Tasks</Link>
-
+      <span className="app-title">My Tasks</span>
       {isAuth && (
-        <button
-          onClick={() => {
-            logout();
-            navigate('/login');
-          }}
-          className="logout-button"
-        >
+        <button className="logout-btn" onClick={handleLogout}>
           🚪 Logout
         </button>
       )}

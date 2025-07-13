@@ -1,10 +1,10 @@
 import { create } from 'zustand';
 
-type AuthStore = {
+interface AuthStore {
   isAuth: boolean;
   login: () => void;
   logout: () => void;
-};
+}
 
 const useAuthStore = create<AuthStore>((set) => ({
   isAuth: false,
