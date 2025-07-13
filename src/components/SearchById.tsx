@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import useTaskStore from '../store/store';      // غيّري المسار لو مختلف
+import useTaskStore from '../store/store';      
 
 const SearchById: React.FC = () => {
   const [id, setId] = useState('');
   const navigate    = useNavigate();
 
-  /* ابحث فى المصفوفة عن أول ID يطابق القيمة المكتوبة */
+  
   const task = useTaskStore(
     (s) => s.tasks.find((t) => t.id === id.trim())
   );
 
-  /* إن أردتِ فتح صفحة تعديل المهمة مباشرة */
+ 
   const handleJump = () => {
     if (task) navigate(`/editTask/${task.id}`);
   };
@@ -32,7 +32,7 @@ const SearchById: React.FC = () => {
         }}
       />
 
-      {/* اختياري: زر Go لفتح المهمة مباشرة */}
+    
       <button
         disabled={!task}
         onClick={handleJump}
@@ -48,7 +48,6 @@ const SearchById: React.FC = () => {
         Go
       </button>
 
-      {/* رسالة حالة البحث */}
       {id && (
         <span style={{ marginLeft: 8 }}>
           {task ? (
