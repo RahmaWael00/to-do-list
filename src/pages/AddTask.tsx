@@ -12,7 +12,7 @@ const AddTask: React.FC = () => {
 
   const handleSave = (data: NewTask): void => {
     addTask(data);
-    navigate('/tasks');     // ✅ ارجع مباشرة لقائمة المهام
+    navigate('/tasks');     
   };
 
   return (
