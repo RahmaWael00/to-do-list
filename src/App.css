@@ -287,4 +287,46 @@ form button.secondary:focus {
   form button {
     width: 100%;
   }
+ /* Navbar Styles */
+/* 🌐 Navbar Styling */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #222;
+  padding: 12px 24px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.navbar-logo {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.navbar-logo:hover {
+  text-decoration: underline;
+}
+
+.logout-button {
+  background-color: #fff;
+  color: #222;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.logout-button:hover {
+  background-color: #222;
+  color: #fff;
+  border: 1px solid #fff;
+}
+
+
 }
