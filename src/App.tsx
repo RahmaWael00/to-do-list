@@ -1,91 +1,99 @@
-import React, { useEffect, useState } from 'react';
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import React from 'react';
+import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 
-import TaskList from './components/TaskList';
-import SearchBar from './components/SearchBar';
-import FilterControls from './components/FilterControls';
-import DarkModeToggle from './components/DarkModeToggle';
-import AddTask from './pages/AddTask';
-import EditTask from './pages/EditTask';
-
+import useDarkMode  from './hooks/useDarkMode';
+import useAuthStore from './store/authStore';
 import useTaskStore from './store/store';
-import './App.css';
+
+import Navbar         from './components/Navbar';
+import DarkModeToggle from './components/DarkModeToggle';
+import SearchBar      from './components/SearchBar';
+import FilterControls from './components/FilterControls';
+import TaskList       from './components/TaskList';
+import AddTask        from './pages/AddTask';
+import EditTask       from './pages/EditTask';
+import Login          from './pages/Login';
+import Home           from './pages/Home';
+import NotFound       from './pages/NotFound';
 
 const App: React.FC = () => {
+  /* ⬇️ الـ Hooks */
+  const { dark, setDark } = useDarkMode();
   const navigate = useNavigate();
+  const isAuth   = useAuthStore((s) => s.isAuth);
 
-  // Dark Mode state
-  const [dark, setDark] = useState<boolean>(false);
+  /* ⬇️ Zustand selectors */
+  const tasks          = useTaskStore((s) => s.tasks);
+  const search         = useTaskStore((s) => s.search);
+  const filterStatus   = useTaskStore((s) => s.filterStatus);
+  const filterPriority = useTaskStore((s) => s.filterPriority);
+  const filterCategory = useTaskStore((s) => s.filterCategory);
+  const toggleComplete = useTaskStore((s) => s.toggleComplete);
+  const deleteTask     = useTaskStore((s) => s.deleteTask);
 
-  // Zustand store values
-  const tasks = useTaskStore(state => state.tasks);
-  const search = useTaskStore(state => state.search);
-  const filterStatus = useTaskStore(state => state.filterStatus);
-  const filterPriority = useTaskStore(state => state.filterPriority);
-  const filterCategory = useTaskStore(state => state.filterCategory);
-
-  const toggleComplete = useTaskStore(state => state.toggleComplete);
-  const deleteTask = useTaskStore(state => state.deleteTask);
-
-  // Toggle dark mode class
-  useEffect(() => {
-    document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
-  }, [dark]);
-
-  // Filtering logic
+  /* ⬇️ فلترة المهام */
   const filtered = tasks
-    .filter(task => task.title.toLowerCase().includes(search.toLowerCase()))
-    .filter(task =>
-      filterStatus === 'all'
-        ? true
-        : filterStatus === 'complete'
-        ? task.completed
-        : !task.completed
-    )
-    .filter(task =>
-      filterPriority === 'all' ? true : task.priority === filterPriority
-    )
-    .filter(task =>
-      filterCategory === 'all' ? true : task.category === filterCategory
-    );
+    .filter((t) => t.title.toLowerCase().includes(search.toLowerCase()))
+    .filter((t) => (filterStatus === 'all' ? true : filterStatus === 'complete' ? t.completed : !t.completed))
+    .filter((t) => (filterPriority === 'all' ? true : t.priority === filterPriority))
+    .filter((t) => (filterCategory === 'all' ? true : t.category === filterCategory));
 
   return (
-    <div className="container">
-      <h1>📝 To‑Do List</h1>
+    <>
+      {isAuth && <Navbar />}
 
-      <div className="controls">
-        <SearchBar />
-        <FilterControls />
+      <div className="container">
+        <h1>📝 To‑Do List</h1>
 
-        <div className="topActions">
-          <DarkModeToggle dark={dark} setDark={setDark} />
-          <button className="addTaskButton" onClick={() => navigate('/addTask')}>
-             Add Task
-          </button>
-        </div>
+        {isAuth && (
+          <div className="controls">
+            <SearchBar />
+            <FilterControls />
+
+            <div className="topActions">
+              <DarkModeToggle dark={dark} setDark={setDark} />
+              <button className="addTaskButton" onClick={() => navigate('/addTask')}>
+                Add Task
+              </button>
+            </div>
+          </div>
+        )}
+
+        <Routes>
+          {/* ⬇️ Login */}
+          <Route path="/login" element={isAuth ? <Navigate to="/tasks" /> : <Login />} />
+
+          {/* ⬇️ الصفحة الرئيسية تحوّل للقائمة */}
+          <Route path="/" element={<Home />} />
+
+          {/* ⬇️ قائمة المهام */}
+          <Route
+            path="/tasks"
+            element={
+              !isAuth ? (
+                <Navigate to="/login" />
+              ) : filtered.length === 0 ? (
+                <p>No tasks found.</p>
+              ) : (
+                <TaskList
+                  tasks={filtered}
+                  onEdit={(t) => navigate(`/editTask/${t.id}`)}
+                  onToggle={toggleComplete}
+                  onDelete={deleteTask}
+                />
+              )
+            }
+          />
+
+          {/* ⬇️ إضافة وتعديل */}
+          <Route path="/addTask" element={isAuth ? <AddTask /> : <Navigate to="/login" />} />
+          <Route path="/editTask/:id" element={isAuth ? <EditTask /> : <Navigate to="/login" />} />
+
+          {/* ⬇️ أي مسار غلط */}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
       </div>
-
-      <Routes>
-        <Route
-          path="/"
-          element={
-            filtered.length === 0 ? (
-              <p>No tasks found.</p>
-            ) : (
-             <TaskList
-              tasks={filtered}
-              onEdit={(task) => navigate(`/editTask/${task.id}`)}
-              onToggle={(id) => toggleComplete(id)}
-              onDelete={(id) => deleteTask(id)}
-                    />
-
-            )
-          }
-        />
-        <Route path="/addTask" element={<AddTask />} />
-        <Route path="/editTask/:id" element={<EditTask />} />
-      </Routes>
-    </div>
+    </>
   );
 };
 
