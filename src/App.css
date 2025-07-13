@@ -287,45 +287,47 @@ form button.secondary:focus {
   form button {
     width: 100%;
   }
- /* Navbar Styles */
-/* 🌐 Navbar Styling */
+/* ======= Navbar Styles ======= */
+/* ===== Navbar styles ===== */
 .navbar {
+  width: 100%;                 /* يغطي العرض كله */
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* يفصل العنوان عن الزر */
   align-items: center;
-  background-color: #222;
-  padding: 12px 24px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  padding: 12px 20px;
+  background: #333 !important; /* لون الخلفية ثابت وواضح */
   border-radius: 8px;
   margin-bottom: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
-.navbar-logo {
+.app-title {
   color: #fff;
-  text-decoration: none;
-  font-size: 1.4rem;
-  font-weight: bold;
+  font-size: 1.3rem;
+  font-weight: 600;
 }
 
-.navbar-logo:hover {
-  text-decoration: underline;
-}
-
-.logout-button {
-  background-color: #fff;
-  color: #222;
+.logout-btn {
+  background: #fff;
+  color: #333;
   border: none;
   border-radius: 6px;
   padding: 6px 14px;
-  font-weight: bold;
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
+  font-weight: 600;
+  transition: background 0.25s, color 0.25s;
 }
 
-.logout-button:hover {
-  background-color: #222;
+.logout-btn:hover {
+  background: #444;
   color: #fff;
-  border: 1px solid #fff;
+}
+
+@media (max-width: 600px) {
+  .navbar {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
 }
 
 
