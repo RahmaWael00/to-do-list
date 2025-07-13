@@ -7,12 +7,12 @@ type NewTask = Omit<StoreTask, 'id' | 'completed'>;
 
 const AddTask: React.FC = () => {
   const navigate = useNavigate();
-  const addTask = useTaskStore((state) => state.addTask);
-  const categories = useTaskStore((state) => state.categories);
+  const addTask   = useTaskStore((s) => s.addTask);
+  const categories = useTaskStore((s) => s.categories);
 
   const handleSave = (data: NewTask): void => {
     addTask(data);
-    navigate('/');
+    navigate('/tasks');     // ✅ ارجع مباشرة لقائمة المهام
   };
 
   return (
@@ -20,7 +20,7 @@ const AddTask: React.FC = () => {
       <h2>➕ Add New Task</h2>
       <TaskForm
         onSave={handleSave}
-        onCancel={() => navigate('/')}
+        onCancel={() => navigate('/tasks')}
         categories={categories}
       />
     </div>
