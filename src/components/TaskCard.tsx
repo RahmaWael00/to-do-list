@@ -1,6 +1,6 @@
 import React from 'react';
 
-// تعريف الأنواع للـ props
+
 interface Task {
   title: string;
   description?: string;
