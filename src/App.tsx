@@ -17,12 +17,12 @@ import Home           from './pages/Home';
 import NotFound       from './pages/NotFound';
 
 const App: React.FC = () => {
-  /* ⬇️ الـ Hooks */
+  /* Hooks */
   const { dark, setDark } = useDarkMode();
   const navigate = useNavigate();
   const isAuth   = useAuthStore((s) => s.isAuth);
 
-  /* ⬇️ Zustand selectors */
+  /* Zustand selectors */
   const tasks          = useTaskStore((s) => s.tasks);
   const search         = useTaskStore((s) => s.search);
   const filterStatus   = useTaskStore((s) => s.filterStatus);
@@ -31,7 +31,7 @@ const App: React.FC = () => {
   const toggleComplete = useTaskStore((s) => s.toggleComplete);
   const deleteTask     = useTaskStore((s) => s.deleteTask);
 
-  /* ⬇️ فلترة المهام */
+  
   const filtered = tasks
     .filter((t) => t.title.toLowerCase().includes(search.toLowerCase()))
     .filter((t) => (filterStatus === 'all' ? true : filterStatus === 'complete' ? t.completed : !t.completed))
@@ -60,13 +60,13 @@ const App: React.FC = () => {
         )}
 
         <Routes>
-          {/* ⬇️ Login */}
+          
           <Route path="/login" element={isAuth ? <Navigate to="/tasks" /> : <Login />} />
 
-          {/* ⬇️ الصفحة الرئيسية تحوّل للقائمة */}
+          
           <Route path="/" element={<Home />} />
 
-          {/* ⬇️ قائمة المهام */}
+          
           <Route
             path="/tasks"
             element={
@@ -85,11 +85,11 @@ const App: React.FC = () => {
             }
           />
 
-          {/* ⬇️ إضافة وتعديل */}
+          
           <Route path="/addTask" element={isAuth ? <AddTask /> : <Navigate to="/login" />} />
           <Route path="/editTask/:id" element={isAuth ? <EditTask /> : <Navigate to="/login" />} />
 
-          {/* ⬇️ أي مسار غلط */}
+          
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
