@@ -6,6 +6,10 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+
+    // 👇
+    "resolveJsonModule": true,
+    "moduleResolution": "node"
   }
 }
