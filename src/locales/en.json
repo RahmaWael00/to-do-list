@@ -1,0 +1,38 @@
+{
+  "navbar": {
+    "title": "My Tasks",
+    "logout": "Logout",
+    "lang": "Language"
+  },
+  "taskcard": {
+    "mark_complete": "Mark Complete",
+    "mark_incomplete": "Mark Incomplete",
+    "edit": "Edit",
+    "delete": "Delete"
+  },
+  "taskform": {
+    "title": "Title",
+    "description": "Description",
+    "due_date": "Due Date",
+    "priority": "Priority",
+    "low": "Low",
+    "medium": "Medium",
+    "high": "High",
+    "category": "Category",
+    "save": "Save",
+    "cancel": "Cancel",
+    "title_required": "Title is required",
+    "max_100": "Max 100 characters",
+    "max_500": "Max 500 characters",
+    "date_past": "Date cannot be in the past"
+  },
+  "go": "Go",
+  "search_placeholder": "Search…",
+  "search_id_placeholder": "Search by ID…",
+  "found": "Found",
+  "not_found": "Not Found",
+  "theme": {
+    "light": "Light",
+    "dark": "Dark"
+  }
+}

@@ -1,17 +1,6 @@
 import React from 'react';
 import TaskCard from './TaskCard';
-
-
-
-interface Task {
-  id: string;
-  title: string;
-  description: string;
-  dueDate: string;
-  priority: string;
-  category: string;
-  completed: boolean;
-}
+import type { Task } from '../types/Task';
 
 interface TaskListProps {
   tasks: Task[];
@@ -20,20 +9,18 @@ interface TaskListProps {
   onDelete: (id: string) => void;
 }
 
-function TaskList({ tasks, onToggle, onEdit, onDelete }: TaskListProps) {
-  return (
-    <div className="task-list">
-      {tasks.map(task => (
-        <TaskCard 
-          key={task.id}
-          task={task}
-          onToggle={() => onToggle(task.id)}
-          onEdit={() => onEdit(task)}
-          onDelete={() => onDelete(task.id)}
-        />
-      ))}
-    </div>
-  );
-}
+const TaskList: React.FC<TaskListProps> = ({ tasks, onToggle, onEdit, onDelete }) => (
+  <div className="task-list">
+    {tasks.map((task) => (
+      <TaskCard
+        key={task.id}
+        task={task}
+        onToggle={() => onToggle(task.id)}
+        onEdit={() => onEdit(task)}
+        onDelete={() => onDelete(task.id)}
+      />
+    ))}
+  </div>
+);
 
 export default TaskList;

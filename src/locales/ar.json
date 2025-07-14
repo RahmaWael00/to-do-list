@@ -1,0 +1,38 @@
+{
+  "navbar": {
+    "title": "مهامي",
+    "logout": "تسجيل الخروج",
+    "lang": "اللغة"
+  },
+  "taskcard": {
+    "mark_complete": "وضع علامة مكتملة",
+    "mark_incomplete": "إلغاء علامة الاكتمال",
+    "edit": "تعديل",
+    "delete": "حذف"
+  },
+  "taskform": {
+    "title": "العنوان",
+    "description": "الوصف",
+    "due_date": "تاريخ الانتهاء",
+    "priority": "الأولوية",
+    "low": "منخفضة",
+    "medium": "متوسطة",
+    "high": "مرتفعة",
+    "category": "الفئة",
+    "save": "حفظ",
+    "cancel": "إلغاء",
+    "title_required": "العنوان مطلوب",
+    "max_100": "حد أقصى 100 حرف",
+    "max_500": "حد أقصى 500 حرف",
+    "date_past": "لا يمكن اختيار تاريخ سابق"
+  },
+  "go": "اذهب",
+  "search_placeholder": "ابحث…",
+  "search_id_placeholder": "بحث بالمعرّف…",
+  "found": "تم العثور",
+  "not_found": "غير موجود",
+  "theme": {
+    "light": "فاتح",
+    "dark": "داكن"
+  }
+}
