@@ -26,11 +26,25 @@
     "max_500": "Max 500 characters",
     "date_past": "Date cannot be in the past"
   },
+  "filters": {
+    "status": {
+      "all": "All",
+      "complete": "Complete",
+      "incomplete": "Incomplete"
+    },
+    "priority": {
+      "all": "All Priorities"
+    },
+    "category": {
+      "all": "All Categories"
+    }
+  },
   "go": "Go",
   "search_placeholder": "Search…",
   "search_id_placeholder": "Search by ID…",
   "found": "Found",
   "not_found": "Not Found",
+  "add_task": "Add Task",
   "theme": {
     "light": "Light",
     "dark": "Dark"

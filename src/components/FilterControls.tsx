@@ -1,45 +1,49 @@
-// src/components/FilterControls.tsx
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import useTaskStore from '../store/store';
 
 const FilterControls: React.FC = () => {
-  const filterStatus = useTaskStore(state => state.filterStatus);
-  const filterPriority = useTaskStore(state => state.filterPriority);
-  const filterCategory = useTaskStore(state => state.filterCategory);
-  const categories = useTaskStore(state => state.categories);
+  const { t } = useTranslation();
 
-  const setFilterStatus = useTaskStore(state => state.setFilterStatus);
-  const setFilterPriority = useTaskStore(state => state.setFilterPriority);
-  const setFilterCategory = useTaskStore(state => state.setFilterCategory);
+  const filterStatus   = useTaskStore((s) => s.filterStatus);
+  const filterPriority = useTaskStore((s) => s.filterPriority);
+  const filterCategory = useTaskStore((s) => s.filterCategory);
+  const categories     = useTaskStore((s) => s.categories);
 
-  const statusOptions = ['all', 'complete', 'incomplete'] as const;
+  const setFilterStatus   = useTaskStore((s) => s.setFilterStatus);
+  const setFilterPriority = useTaskStore((s) => s.setFilterPriority);
+  const setFilterCategory = useTaskStore((s) => s.setFilterCategory);
+
+  const statusOptions   = ['all', 'complete', 'incomplete'] as const;
   const priorityOptions = ['all', 'Low', 'Medium', 'High'] as const;
 
   return (
     <div className="filterControls">
-      {/* Status Filter */}
+      {/* Status */}
       <select value={filterStatus} onChange={(e) => setFilterStatus(e.target.value as any)}>
-        {statusOptions.map(status => (
+        {statusOptions.map((status) => (
           <option key={status} value={status}>
-            {status.charAt(0).toUpperCase() + status.slice(1)}
+            {t(`filters.status.${status}`)}
           </option>
         ))}
       </select>
 
-      {/* Priority Filter */}
+      {/* Priority */}
       <select value={filterPriority} onChange={(e) => setFilterPriority(e.target.value as any)}>
-        {priorityOptions.map(priority => (
-          <option key={priority} value={priority}>
-            {priority === 'all' ? 'All Priorities' : priority}
+        {priorityOptions.map((p) => (
+          <option key={p} value={p}>
+            {p === 'all' ? t('filters.priority.all') : t(`taskform.${p.toLowerCase()}`)}
           </option>
         ))}
       </select>
 
-      {/* Category Filter */}
+      {/* Category */}
       <select value={filterCategory} onChange={(e) => setFilterCategory(e.target.value)}>
-        <option value="all">All Categories</option>
-        {categories.map(cat => (
-          <option key={cat} value={cat}>{cat}</option>
+        <option value="all">{t('filters.category.all')}</option>
+        {categories.map((cat) => (
+          <option key={cat} value={cat}>
+            {cat}
+          </option>
         ))}
       </select>
     </div>

@@ -26,11 +26,25 @@
     "max_500": "حد أقصى 500 حرف",
     "date_past": "لا يمكن اختيار تاريخ سابق"
   },
+  "filters": {
+    "status": {
+      "all": "الكل",
+      "complete": "مكتملة",
+      "incomplete": "غير مكتملة"
+    },
+    "priority": {
+      "all": "كل الأولويات"
+    },
+    "category": {
+      "all": "كل الفئات"
+    }
+  },
   "go": "اذهب",
   "search_placeholder": "ابحث…",
   "search_id_placeholder": "بحث بالمعرّف…",
   "found": "تم العثور",
   "not_found": "غير موجود",
+  "add_task": "إضافة مهمة",
   "theme": {
     "light": "فاتح",
     "dark": "داكن"
