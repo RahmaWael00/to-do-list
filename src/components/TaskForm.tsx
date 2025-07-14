@@ -40,7 +40,7 @@ const TaskForm: React.FC<TaskFormProps> = ({
 
   return (
     <form onSubmit={handleSubmit(onSave)}>
-      {/* عنوان المهمة */}
+    
       <div>
         <label>{t('taskform.title')}*</label>
         <input
@@ -52,7 +52,7 @@ const TaskForm: React.FC<TaskFormProps> = ({
         {errors.title && <small>{errors.title.message}</small>}
       </div>
 
-      {/* وصف المهمة */}
+     
       <div>
         <label>{t('taskform.description')}</label>
         <textarea
@@ -64,7 +64,7 @@ const TaskForm: React.FC<TaskFormProps> = ({
         {errors.description && <small>{errors.description.message}</small>}
       </div>
 
-      {/* تاريخ الانتهاء */}
+     
       <div>
         <label>{t('taskform.due_date')}</label>
         <input
@@ -84,7 +84,7 @@ const TaskForm: React.FC<TaskFormProps> = ({
         {errors.dueDate && <small>{errors.dueDate.message}</small>}
       </div>
 
-      {/* أولوية */}
+
       <div>
         <label>{t('taskform.priority')}*</label>
         <select {...register('priority', { required: true })}>
@@ -94,7 +94,7 @@ const TaskForm: React.FC<TaskFormProps> = ({
         </select>
       </div>
 
-      {/* فئة */}
+    
       <div>
         <label>{t('taskform.category')}</label>
         <input
@@ -111,7 +111,7 @@ const TaskForm: React.FC<TaskFormProps> = ({
         {errors.category && <small>{errors.category.message}</small>}
       </div>
 
-      {/* أزرار */}
+     
       <div className="controls">
         <button type="submit">{t('taskform.save')}</button>
         <button
