@@ -1,5 +1,6 @@
 import React from 'react';
 import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 /* Hooks & Zustand stores */
 import useDarkMode   from './hooks/useDarkMode';
@@ -21,6 +22,8 @@ import Login     from './pages/Login';
 import NotFound  from './pages/NotFound';
 
 const App: React.FC = () => {
+  const { t } = useTranslation();
+
   /* Dark‑mode hook */
   const { dark, setDark } = useDarkMode();
 
@@ -53,33 +56,28 @@ const App: React.FC = () => {
 
   return (
     <>
-    
       {isAuth && <Navbar />}
 
       <div className="container">
-        <h1>📝 To‑Do List</h1>
+        <h1>📝 {t('navbar.title')}</h1>
 
-   
         {isAuth && (
           <div className="controls">
             <SearchBar />
-            <SearchById />  
+            <SearchById />
             <FilterControls />
 
             <div className="topActions">
               <DarkModeToggle dark={dark} setDark={setDark} />
               <button className="addTaskButton" onClick={() => navigate('/addTask')}>
-                Add Task
+                {t('add_task')}
               </button>
             </div>
           </div>
         )}
 
-     
         <Routes>
-       
           <Route path="/login" element={isAuth ? <Navigate to="/tasks" /> : <Login />} />
-
           <Route path="/" element={<Navigate to="/tasks" />} />
 
           <Route
@@ -88,7 +86,7 @@ const App: React.FC = () => {
               !isAuth ? (
                 <Navigate to="/login" />
               ) : filtered.length === 0 ? (
-                <p>No tasks found.</p>
+                <p>{t('not_found')}</p>
               ) : (
                 <TaskList
                   tasks={filtered}
@@ -100,7 +98,6 @@ const App: React.FC = () => {
             }
           />
 
-     
           <Route path="/addTask" element={isAuth ? <AddTask /> : <Navigate to="/login" />} />
           <Route path="/editTask/:id" element={isAuth ? <EditTask /> : <Navigate to="/login" />} />
 
