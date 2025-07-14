@@ -1,15 +1,17 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import useTaskStore from '../store/store';
 
 const SearchBar: React.FC = () => {
-  const search = useTaskStore((state) => state.search);
-  const setSearch = useTaskStore((state) => state.setSearch);
+  const { t } = useTranslation();
+  const search = useTaskStore((s) => s.search);
+  const setSearch = useTaskStore((s) => s.setSearch);
 
   return (
     <input
       type="text"
       className="search-input"
-      placeholder="Search tasks…"
+      placeholder={t('search_placeholder')}
       value={search}
       onChange={(e) => setSearch(e.target.value)}
     />
