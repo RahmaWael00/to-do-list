@@ -39,6 +39,13 @@
       "all": "كل الفئات"
     }
   },
+"categories": {
+    "Work":     "العمل",
+    "Personal": "شخصي",
+    "Shopping": "تسوق",
+    "Health":   "الصحة",
+    "Other":    "أخرى"
+  },
   "go": "اذهب",
   "search_placeholder": "ابحث…",
   "search_id_placeholder": "بحث بالمعرّف…",

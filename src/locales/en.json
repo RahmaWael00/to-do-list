@@ -39,6 +39,13 @@
       "all": "All Categories"
     }
   },
+  "categories": {
+    "Work": "Work",
+    "Personal": "Personal",
+    "Shopping": "Shopping",
+    "Health": "Health",
+    "Other": "Other"
+  },
   "go": "Go",
   "search_placeholder": "Search…",
   "search_id_placeholder": "Search by ID…",
